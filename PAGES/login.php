@@ -12,7 +12,7 @@
 		{
 
 			//lleer desde la base de datos
-			$query = "select * from users where user_name = '$user_name' limit 1"; // cambiar nombre base de datos
+			$query = "select * from user where user_name = '$user_name' limit 1"; // cambiar nombre base de datos
 			$result = mysqli_query($con, $query);
 
 			if($result)
@@ -26,7 +26,8 @@
 					{
 
 						$_SESSION['user_id'] = $user_data['user_id'];
-						header("Location: index.php");
+						//$_SESSION['apunte_id'] = $user_data['apunte_id'];
+						header("Location: ../index.php");
 						die;
 					}
 				}
@@ -42,19 +43,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <tittle>LOGIN</tittle>
+   <title>LOGIN</title>
    <link rel="stylesheet" href="CSS/styles.css" type="text/css" />
 </head>
 
 <body>
    <div id="formBox">
-   
-     <form method="POST">
-     <input type="text" name="user_name"><br><br>
-     <input type="password" name="password"><br><br>
-     <input type="submit" value="LOGIN">
+     <form method="POST" autocomplete="off" >
+		 <fieldset style="width:10%; text-align:center">
+			 <legend>LOGIN</legend>
+             <input type="text" name="user_name" autocomplete="off" placeholder="nombre de usuario"><br><br>
+             <input type="password" name="password" autocomplete="off" placeholder="contraseña"><br><br>
+             <input type="submit" value="LOGIN">
+	     </fieldset>
      </form>
-   
+     
    </div>
 </body>
 
